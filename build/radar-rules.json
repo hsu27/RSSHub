@@ -8983,6 +8983,20 @@
       }
     ]
   },
+  "carp.co.jp": {
+    "_name": "広島東洋カープ",
+    "www": [
+      {
+        "title": "陳ブログ",
+        "docs": "https://docs.rsshub.app/routes/blog",
+        "source": [
+          "/chen-blog",
+          "/chen-blog/:date"
+        ],
+        "target": "/HiroshimaCarp/chen-blog"
+      }
+    ]
+  },
   "a9vg.com": {
     "_name": "A9VG 电玩部落",
     "www": [
@@ -21600,6 +21614,14 @@
           "/"
         ],
         "target": "/gq/news"
+      },
+      {
+        "title": "News",
+        "docs": "https://docs.rsshub.app/routes/traditional-media",
+        "source": [
+          "/"
+        ],
+        "target": "/gqTW/news"
       }
     ]
   },

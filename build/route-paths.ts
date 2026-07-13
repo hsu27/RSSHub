@@ -1314,6 +1314,7 @@ export type RoutePath =
   | `/gov/zj/zfcg-helper`
   | `/gov/zj/zfcg/:code?`
   | `/gq/news`
+  | `/gqTW/news`
   | `/grainoil/:category/:id`
   | `/greasyfork/:language/:domain?`
   | `/greasyfork/scripts/:script/feedback`
@@ -1385,6 +1386,7 @@ export type RoutePath =
   | `/hinatazaka46/blog/:id?/:page?`
   | `/hinatazaka46/news`
   | `/hiring.cafe/jobs/:keywords`
+  | `/HiroshimaCarp/chen-blog`
   | `/hit/hitgs/:id?`
   | `/hit/today/:category`
   | `/hitcon/zeroday/vulnerability/:status?`
