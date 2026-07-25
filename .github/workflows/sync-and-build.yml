@@ -1,8 +1,8 @@
 name: Sync and Build
 
 on:
-    schedule:
-        - cron: '30 0 5,25 * *' # 每月 5 號與 25 號 00:30 UTC 自動跑
+    # schedule:
+        # - cron: '30 0 5,25 * *' # 每月 5 號與 25 號 00:30 UTC 自動跑
     workflow_dispatch: # 允許手動觸發
 
 permissions:
