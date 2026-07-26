@@ -38,56 +38,6 @@
         "target": "/163/ds/:id"
       }
     ],
-    "music": [
-      {
-        "title": "电台节目",
-        "docs": "https://docs.rsshub.app/routes/multimedia",
-        "source": [
-          "/djradio"
-        ],
-        "target": "/163/music/djradio/:id"
-      },
-      {
-        "title": "用户动态",
-        "docs": "https://docs.rsshub.app/routes/multimedia",
-        "source": [
-          "/user/event"
-        ],
-        "target": "/163/music/user/events/:id"
-      },
-      {
-        "title": "用户歌单",
-        "docs": "https://docs.rsshub.app/routes/multimedia",
-        "source": [
-          "/user/home"
-        ],
-        "target": "/163/music/user/playlist/:id"
-      },
-      {
-        "title": "歌手歌曲",
-        "docs": "https://docs.rsshub.app/routes/multimedia",
-        "source": [
-          "/artist"
-        ],
-        "target": "/163/music/artist/songs/:id"
-      },
-      {
-        "title": "歌手专辑",
-        "docs": "https://docs.rsshub.app/routes/multimedia",
-        "source": [
-          "/artist/album"
-        ],
-        "target": "/163/music/artist/:id"
-      },
-      {
-        "title": "歌单歌曲",
-        "docs": "https://docs.rsshub.app/routes/multimedia",
-        "source": [
-          "/playlist"
-        ],
-        "target": "/163/music/playlist/:id"
-      }
-    ],
     "3g": [
       {
         "title": "栏目",
@@ -4992,6 +4942,27 @@
       }
     ]
   },
+  "pawchive.st": {
+    "_name": "Pawchive",
+    ".": [
+      {
+        "title": "Posts",
+        "docs": "https://docs.rsshub.app/routes/anime",
+        "source": [
+          "/"
+        ],
+        "target": "/pawchive/:service/:id"
+      },
+      {
+        "title": "Posts",
+        "docs": "https://docs.rsshub.app/routes/anime",
+        "source": [
+          "/:service/user/:id"
+        ],
+        "target": "/pawchive/:service/:id"
+      }
+    ]
+  },
   "pixabay.com": {
     "_name": "Pixabay",
     ".": [
@@ -5015,19 +4986,6 @@
           "/:user"
         ],
         "target": "/rattibha/user/:user"
-      }
-    ]
-  },
-  "scmuseum.cn": {
-    "_name": "Sichuan Museum",
-    "www": [
-      {
-        "title": "Exhibition",
-        "docs": "https://docs.rsshub.app/routes/travel",
-        "source": [
-          "/Visit/Exhibition"
-        ],
-        "target": "/scmuseum/exhibition"
       }
     ]
   },
@@ -5486,7 +5444,7 @@
         "source": [
           "/discussed"
         ],
-        "target": "/daily/discussed/:period?/:dateSort?"
+        "target": "/daily/discussed/:period?/:innerSharedContent?/:dateSort?"
       },
       {
         "title": "Popular",
@@ -5494,7 +5452,7 @@
         "source": [
           "/popular"
         ],
-        "target": "/daily/popular/:dateSort?"
+        "target": "/daily/popular/:innerSharedContent?/:dateSort?"
       },
       {
         "title": "Source Posts",
@@ -5502,7 +5460,7 @@
         "source": [
           "/sources/:sourceId"
         ],
-        "target": "/daily/source/:sourceId"
+        "target": "/daily/source/:sourceId/:innerSharedContent?"
       },
       {
         "title": "Squads",
@@ -5510,7 +5468,7 @@
         "source": [
           "/squads/:squads"
         ],
-        "target": "/daily/squads/:squads"
+        "target": "/daily/squads/:squads/:innerSharedContent?"
       },
       {
         "title": "Most upvoted",
@@ -5518,7 +5476,7 @@
         "source": [
           "/upvoted"
         ],
-        "target": "/daily/upvoted/:period?/:dateSort?"
+        "target": "/daily/upvoted/:period?/:innerSharedContent?/:dateSort?"
       },
       {
         "title": "User Posts",
@@ -5527,7 +5485,7 @@
           "/:userId/posts",
           "/:userId"
         ],
-        "target": "/daily/user/:userId"
+        "target": "/daily/user/:userId/:innerSharedContent?"
       }
     ]
   },
@@ -8303,19 +8261,6 @@
       }
     ]
   },
-  "3gmuseum.cn": {
-    "_name": "Chongqing China Three Gorges Museum",
-    "www": [
-      {
-        "title": "Temporary Exhibition",
-        "docs": "https://docs.rsshub.app/routes/travel",
-        "source": [
-          "/web/column/col5009287.html"
-        ],
-        "target": "/3gmuseum/tempexhibition"
-      }
-    ]
-  },
   "423down.com": {
     "_name": "423Down",
     ".": [
@@ -9035,6 +8980,20 @@
           "/index.php"
         ],
         "target": "/91porn/:lang?"
+      }
+    ]
+  },
+  "carp.co.jp": {
+    "_name": "広島東洋カープ",
+    "www": [
+      {
+        "title": "陳ブログ",
+        "docs": "https://docs.rsshub.app/routes/blog",
+        "source": [
+          "/chen-blog",
+          "/chen-blog/:date"
+        ],
+        "target": "/HiroshimaCarp/chen-blog"
       }
     ]
   },
@@ -13881,27 +13840,6 @@
       }
     ]
   },
-  "capitalmuseum.org.cn": {
-    "_name": "Capital Museum",
-    "www": [
-      {
-        "title": "Exhibitions",
-        "docs": "https://docs.rsshub.app/routes/travel",
-        "source": [
-          "/exhibition"
-        ],
-        "target": "/capitalmuseum/exhibition"
-      },
-      {
-        "title": "News",
-        "docs": "https://docs.rsshub.app/routes/travel",
-        "source": [
-          "/news"
-        ],
-        "target": "/capitalmuseum/news"
-      }
-    ]
-  },
   "cartoonmad.com": {
     "_name": "動漫狂",
     ".": [
@@ -17164,14 +17102,6 @@
           "/detail/:id"
         ],
         "target": "/comic-walker/manga/:id"
-      },
-      {
-        "title": "漫画详情",
-        "docs": "https://docs.rsshub.app/routes/anime",
-        "source": [
-          "/detail/:id/episodes/:episodeId"
-        ],
-        "target": "/comic-walker/manga/:id"
       }
     ]
   },
@@ -17649,29 +17579,6 @@
           "/"
         ],
         "target": "/csu/career"
-      }
-    ]
-  },
-  "csust.edu.cn": {
-    "_name": "长沙理工大学",
-    "www": [
-      {
-        "title": "通告公示",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/tggs.htm",
-          "/"
-        ],
-        "target": "/csust/tggs"
-      },
-      {
-        "title": "学科学术",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/xkxs.htm",
-          "/"
-        ],
-        "target": "/csust/xkxs"
       }
     ]
   },
@@ -21072,27 +20979,6 @@
       }
     ]
   },
-  "gdmuseum.org.cn": {
-    "_name": "Guangdong Museum",
-    "www": [
-      {
-        "title": "Current Exhibitions",
-        "docs": "https://docs.rsshub.app/routes/travel",
-        "source": [
-          "/col9/list"
-        ],
-        "target": "/gdmuseum/exhibition"
-      },
-      {
-        "title": "Information",
-        "docs": "https://docs.rsshub.app/routes/travel",
-        "source": [
-          "/cn/col51/list"
-        ],
-        "target": "/gdmuseum/information"
-      }
-    ]
-  },
   "gdufs.edu.cn": {
     "_name": "广东外语外贸大学",
     "www": [
@@ -21678,7 +21564,7 @@
         "title": "感染症発生動向調査週報",
         "docs": "https://docs.rsshub.app/routes/government",
         "source": [
-          "/surveillance/idwr/idwr/:year"
+          "/surveillance/idwr/jp/idwr/:year"
         ],
         "target": "/goparams=>{const year=params.year;return`/go/jihs/idwr${year?`/${year}`:\"\"}`}"
       }
@@ -21728,6 +21614,14 @@
           "/"
         ],
         "target": "/gq/news"
+      },
+      {
+        "title": "News",
+        "docs": "https://docs.rsshub.app/routes/traditional-media",
+        "source": [
+          "/"
+        ],
+        "target": "/gqTW/news"
       }
     ]
   },
@@ -21966,42 +21860,6 @@
           "/"
         ],
         "target": "/guanhai/"
-      }
-    ]
-  },
-  "gxmzu.edu.cn": {
-    "_name": "广西民族大学",
-    "ai": [
-      {
-        "title": "人工智能学院通知公告",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/index/tzgg.htm",
-          "/"
-        ],
-        "target": "/gxmzu/aitzgg"
-      }
-    ],
-    "library": [
-      {
-        "title": "图书馆最新消息",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/news/news_list.jsp",
-          "/"
-        ],
-        "target": "/gxmzu/libzxxx"
-      }
-    ],
-    "yjs": [
-      {
-        "title": "研究生院招生公告",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/tzgg/zsgg.htm",
-          "/"
-        ],
-        "target": "/gxmzu/yjszsgg"
       }
     ]
   },
@@ -25360,31 +25218,6 @@
       }
     ]
   },
-  "jou.edu.cn": {
-    "_name": "江苏海洋大学",
-    "www": [
-      {
-        "title": "官网通知公告",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/index/tzgg.htm",
-          "/"
-        ],
-        "target": "/jou/tzgg"
-      }
-    ],
-    "yz": [
-      {
-        "title": "研招网通知公告",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/index/zxgg.htm",
-          "/"
-        ],
-        "target": "/jou/yztzgg"
-      }
-    ]
-  },
   "jpmorganchase.com": {
     "_name": "JPMorgan Chase",
     ".": [
@@ -26527,27 +26360,6 @@
           "/article"
         ],
         "target": "/ltaaa/article"
-      }
-    ]
-  },
-  "ltn.com.tw": {
-    "_name": "自由時報",
-    "def": [
-      {
-        "title": "自由軍武頻道",
-        "docs": "https://docs.rsshub.app/routes/traditional-media",
-        "source": [
-          "/:channel"
-        ],
-        "target": "/ltn/def/:channel"
-      },
-      {
-        "title": "自由軍武頻道",
-        "docs": "https://docs.rsshub.app/routes/traditional-media",
-        "source": [
-          "/list/:id"
-        ],
-        "target": "/ltn/def/list/:id"
       }
     ]
   },
@@ -30919,31 +30731,6 @@
       }
     ]
   },
-  "njxzc.edu.cn": {
-    "_name": "南京晓庄学院",
-    "www": [
-      {
-        "title": "官网通知公告",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/89/list.htm",
-          "/"
-        ],
-        "target": "/njxzc/tzgg"
-      }
-    ],
-    "lib": [
-      {
-        "title": "图书馆通知公告",
-        "docs": "https://docs.rsshub.app/routes/university",
-        "source": [
-          "/pxyhd/list.htm",
-          "/"
-        ],
-        "target": "/njxzc/libtzgg"
-      }
-    ]
-  },
   "nltimes.nl": {
     "_name": "NL Times",
     ".": [
@@ -34438,27 +34225,6 @@
           "/articles.html"
         ],
         "target": "/paulgraham/"
-      }
-    ]
-  },
-  "pawchive.pw": {
-    "_name": "Pawchive",
-    ".": [
-      {
-        "title": "Posts",
-        "docs": "https://docs.rsshub.app/routes/anime",
-        "source": [
-          "/"
-        ],
-        "target": "/pawchive/:service/:id"
-      },
-      {
-        "title": "Posts",
-        "docs": "https://docs.rsshub.app/routes/anime",
-        "source": [
-          "/:service/user/:id"
-        ],
-        "target": "/pawchive/:service/:id"
       }
     ]
   },
@@ -39311,19 +39077,6 @@
       }
     ]
   },
-  "szmuseum.com": {
-    "_name": "Suzhou Museum",
-    "www": [
-      {
-        "title": "Special Exhibition",
-        "docs": "https://docs.rsshub.app/routes/travel",
-        "source": [
-          "/Exhibition/Temporary"
-        ],
-        "target": "/szmuseum/temporary"
-      }
-    ]
-  },
   "szse.cn": {
     "_name": "深圳证券交易所",
     ".": [
@@ -40401,27 +40154,6 @@
           "/"
         ],
         "target": "/tingshuitz/yangjiang"
-      }
-    ]
-  },
-  "tjbwg.cn": {
-    "_name": "Tianjin Museum",
-    "www": [
-      {
-        "title": "Temporary Exhibition",
-        "docs": "https://docs.rsshub.app/routes/travel",
-        "source": [
-          "/cn/ExhibitionList.aspx"
-        ],
-        "target": "/tjbwg/exhibition"
-      },
-      {
-        "title": "News",
-        "docs": "https://docs.rsshub.app/routes/travel",
-        "source": [
-          "/cn/NewsList.aspx"
-        ],
-        "target": "/tjbwg/news"
       }
     ]
   },
@@ -42148,7 +41880,7 @@
     "_name": "小宇宙",
     ".": [
       {
-        "title": "发现",
+        "title": "Unknown",
         "docs": "https://docs.rsshub.app/routes/multimedia",
         "source": [
           "/"
@@ -44170,6 +43902,29 @@
           "/"
         ],
         "target": "/css-tricks/popular"
+      }
+    ]
+  },
+  "csust.edu.cn": {
+    "_name": "长沙理工大学",
+    "www": [
+      {
+        "title": "通告公示",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/tggs.htm",
+          "/"
+        ],
+        "target": "/csust/tggs"
+      },
+      {
+        "title": "学科学术",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/xkxs.htm",
+          "/"
+        ],
+        "target": "/csust/xkxs"
       }
     ]
   },
@@ -48355,6 +48110,42 @@
       }
     ]
   },
+  "gxmzu.edu.cn": {
+    "_name": "广西民族大学",
+    "library": [
+      {
+        "title": "图书馆最新消息",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/news/news_list.jsp",
+          "/"
+        ],
+        "target": "/gxmzu/libzxxx"
+      }
+    ],
+    "ai": [
+      {
+        "title": "人工智能学院通知公告",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/index/tzgg.htm",
+          "/"
+        ],
+        "target": "/gxmzu/aitzgg"
+      }
+    ],
+    "yjs": [
+      {
+        "title": "研究生院招生公告",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/tzgg/zsgg.htm",
+          "/"
+        ],
+        "target": "/gxmzu/yjszsgg"
+      }
+    ]
+  },
   "hdu.edu.cn": {
     "_name": "杭州电子科技大学",
     "computer": [
@@ -48803,6 +48594,31 @@
           "/"
         ],
         "target": "/joshwcomeau/popular"
+      }
+    ]
+  },
+  "jou.edu.cn": {
+    "_name": "江苏海洋大学",
+    "www": [
+      {
+        "title": "官网通知公告",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/index/tzgg.htm",
+          "/"
+        ],
+        "target": "/jou/tzgg"
+      }
+    ],
+    "yz": [
+      {
+        "title": "研招网通知公告",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/index/zxgg.htm",
+          "/"
+        ],
+        "target": "/jou/yztzgg"
       }
     ]
   },
@@ -49294,6 +49110,31 @@
           "/"
         ],
         "target": "/njucm/grabszs"
+      }
+    ]
+  },
+  "njxzc.edu.cn": {
+    "_name": "南京晓庄学院",
+    "lib": [
+      {
+        "title": "图书馆通知公告",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/pxyhd/list.htm",
+          "/"
+        ],
+        "target": "/njxzc/libtzgg"
+      }
+    ],
+    "www": [
+      {
+        "title": "官网通知公告",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/89/list.htm",
+          "/"
+        ],
+        "target": "/njxzc/tzgg"
       }
     ]
   },
@@ -51197,6 +51038,15 @@
         "target": "/zhihu/collection/:id"
       },
       {
+        "title": "用户文章",
+        "docs": "https://docs.rsshub.app/routes/social-media",
+        "source": [
+          "/:usertype/:id/posts",
+          "/:usertype/:id"
+        ],
+        "target": "/zhihu/posts/:usertype/:id"
+      },
+      {
         "title": "知乎书店 - 知乎周刊",
         "docs": "https://docs.rsshub.app/routes/social-media",
         "source": [
@@ -51227,15 +51077,6 @@
           "/people/:id/answers"
         ],
         "target": "/zhihu/people/answers/:id"
-      },
-      {
-        "title": "用户文章",
-        "docs": "https://docs.rsshub.app/routes/social-media",
-        "source": [
-          "/:usertype/:id/posts",
-          "/:usertype/:id"
-        ],
-        "target": "/zhihu/posts/:usertype/:id"
       },
       {
         "title": "问题",

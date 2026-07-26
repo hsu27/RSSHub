@@ -55,7 +55,6 @@ export type RoutePath =
   | `/36kr/hot-list/:category?`
   | `/3dmgame/games/:name/:type?`
   | `/3dmgame/news/:category?`
-  | `/3gmuseum/tempexhibition`
   | `/3kns/:filters?/:order?`
   | `/423down/:category{.+}?`
   | `/4chan/:board/catalog/:routeParams?`
@@ -456,8 +455,6 @@ export type RoutePath =
   | `/cankaoxiaoxi/column/:id?`
   | `/capitalmind/insights`
   | `/capitalmind/podcasts`
-  | `/capitalmuseum/exhibition/:type?`
-  | `/capitalmuseum/news/:type?`
   | `/cara/likes/:user`
   | `/cara/portfolio/:user`
   | `/cara/timeline/:user`
@@ -717,12 +714,12 @@ export type RoutePath =
   | `/cztv/zjxwlb`
   | `/cztv/zjxwlb/daily`
   | `/dahecube/:type?`
-  | `/daily/discussed/:period?/:dateSort?`
-  | `/daily/popular/:dateSort?`
-  | `/daily/source/:sourceId`
-  | `/daily/squads/:squads`
-  | `/daily/upvoted/:period?/:dateSort?`
-  | `/daily/user/:userId`
+  | `/daily/discussed/:period?/:innerSharedContent?/:dateSort?`
+  | `/daily/popular/:innerSharedContent?/:dateSort?`
+  | `/daily/source/:sourceId/:innerSharedContent?`
+  | `/daily/squads/:squads/:innerSharedContent?`
+  | `/daily/upvoted/:period?/:innerSharedContent?/:dateSort?`
+  | `/daily/user/:userId/:innerSharedContent?`
   | `/dailypush/:sort?`
   | `/dailypush/tag/:tag/:sort?`
   | `/damai/activity/:city/:category/:subcategory/:keyword?`
@@ -1106,8 +1103,6 @@ export type RoutePath =
   | `/gcores/users/:id/radios`
   | `/gcores/users/:id/talks`
   | `/gcores/videos`
-  | `/gdmuseum/exhibition/:type?`
-  | `/gdmuseum/information`
   | `/gdsrx/:id?`
   | `/gdufs/news`
   | `/gdufs/xwxy/:category?`
@@ -1319,6 +1314,7 @@ export type RoutePath =
   | `/gov/zj/zfcg-helper`
   | `/gov/zj/zfcg/:code?`
   | `/gq/news`
+  | `/gqTW/news`
   | `/grainoil/:category/:id`
   | `/greasyfork/:language/:domain?`
   | `/greasyfork/scripts/:script/feedback`
@@ -1390,6 +1386,7 @@ export type RoutePath =
   | `/hinatazaka46/blog/:id?/:page?`
   | `/hinatazaka46/news`
   | `/hiring.cafe/jobs/:keywords`
+  | `/HiroshimaCarp/chen-blog`
   | `/hit/hitgs/:id?`
   | `/hit/today/:category`
   | `/hitcon/zeroday/vulnerability/:status?`
@@ -1821,7 +1818,6 @@ export type RoutePath =
   | `/lrepacks/:category?`
   | `/lsnu/jiaowc/tzgg/:category?`
   | `/ltaaa/article`
-  | `/ltn/def/:channel{.+}?`
   | `/luma/:url`
   | `/luogu/contest`
   | `/luogu/daily/:id?`
@@ -2486,7 +2482,6 @@ export type RoutePath =
   | `/scmp/:category_id`
   | `/scmp/coronavirus`
   | `/scmp/topics/:topic`
-  | `/scmuseum/exhibition/:type?`
   | `/scnu/cs/match`
   | `/scnu/jw`
   | `/scnu/library`
@@ -2750,7 +2745,6 @@ export type RoutePath =
   | `/sysu/ygafz/:type?`
   | `/szftedu/dongtai`
   | `/szftedu/gonggao`
-  | `/szmuseum/temporary`
   | `/szse/disclosure/listed/notice/:query?`
   | `/szse/inquire/:category?/:select?/:keyword?`
   | `/szse/notice`
@@ -2859,8 +2853,6 @@ export type RoutePath =
   | `/tingshuitz/yangjiang`
   | `/tingtingfm/program/:programId`
   | `/tisi/latest`
-  | `/tjbwg/exhibition`
-  | `/tjbwg/news`
   | `/tju/cic/:type?`
   | `/tju/news/:type?`
   | `/tju/oaa/:type?`
@@ -3295,7 +3287,6 @@ export type RoutePath =
   | `/zju/cst/custom/:id`
   | `/zju/grs/:type`
   | `/zju/list/:type`
-  | `/zju/math/:type`
   | `/zju/physics/:type`
   | `/zju/sis/:type`
   | `/zjut/cs/:type`
