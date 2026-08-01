@@ -1,4 +1,4 @@
-name: Sync and Build
+name:  Build Docker image
 
 on:
     # schedule:
@@ -8,10 +8,9 @@ on:
 permissions:
     contents: write # 同步/推送 branch 需要
     packages: write # 推 image 到 ghcr 需要
-    issues: write # 失敗時開 issue 需要
 
 jobs:
-    sync-and-build:
+    build:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout repository
@@ -25,37 +24,6 @@ jobs:
               run: |
                   git config user.name "github-actions[bot]"
                   git config user.email "github-actions[bot]@users.noreply.github.com"
-
-            - name: Sync master with upstream
-              env:
-                  GH_PAT: ${{ secrets.RSSHUB_PAT }}
-              run: |
-                  # 確保本地有 master 與 my-routes 分支並與遠端同步
-                  git checkout master || git checkout -b master origin/master
-                  git remote add upstream https://github.com/DIYgod/RSSHub.git
-
-                  # 清掉 actions/checkout 對 github.com 注入的全域憑證，
-                  # 讓 upstream 走匿名（公開）抓取，避免帶著本帳號 PAT 造成 403
-                  git config --unset-all http.https://github.com/.extraheader || true
-
-                  # 清掉憑證後 origin 也失去授權，因此把 PAT 直接嵌進 origin URL
-                  git remote set-url origin "https://x-access-token:${GH_PAT}@github.com/${GITHUB_REPOSITORY}.git"
-
-                  git fetch upstream master
-                  git merge --ff-only upstream/master
-                  git push origin master
-
-            - name: Merge master into my-routes
-              id: merge
-              run: |
-                  git checkout my-routes || git checkout -b my-routes origin/my-routes
-                  if ! git merge master --no-edit; then
-                    git merge --abort
-                    echo "conflict=true" >> "$GITHUB_OUTPUT"
-                    echo "::error::Merge conflict when merging master into my-routes"
-                    exit 1
-                  fi
-                  git push origin my-routes
 
             - name: Log in to GitHub Container Registry
               uses: docker/login-action@v3
@@ -75,56 +43,3 @@ jobs:
                   context: .
                   push: true
                   tags: ghcr.io/${{ steps.repo_owner.outputs.owner }}/rsshub:latest
-
-            - name: Open issue on failure
-              if: failure()
-              uses: actions/github-script@v7
-              with:
-                  script: |
-                      const conflict = '${{ steps.merge.outputs.conflict }}' === 'true';
-                      const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
-                      const title = conflict
-                        ? '⚠️ Sync 失敗：master 合併進 my-routes 有衝突'
-                        : '⚠️ Sync/Build workflow 失敗';
-                      const body = [
-                        conflict
-                          ? '將 `master` 合併進 `my-routes` 時發生衝突，已自動 abort，請手動處理。'
-                          : 'Sync/Build workflow 執行失敗，請查看 log。',
-                        '',
-                        conflict ? [
-                          '手動處理步驟:',
-                          '```bash',
-                          'git checkout my-routes',
-                          'git merge master',
-                          '# 解決衝突後',
-                          'git add -A && git commit',
-                          'git push origin my-routes',
-                          '```',
-                        ].join('\n') : '',
-                        '',
-                        `執行紀錄: ${runUrl}`,
-                      ].join('\n');
-
-                      const { data: issues } = await github.rest.issues.listForRepo({
-                        owner: context.repo.owner,
-                        repo: context.repo.repo,
-                        state: 'open',
-                        labels: ['sync-failure'], // 修正：API 帶入標籤需為陣列
-                      });
-
-                      if (issues.length > 0) {
-                        await github.rest.issues.createComment({
-                          owner: context.repo.owner,
-                          repo: context.repo.repo,
-                          issue_number: issues[0].number,
-                          body,
-                        });
-                      } else {
-                        await github.rest.issues.create({
-                          owner: context.repo.owner,
-                          repo: context.repo.repo,
-                          title,
-                          body,
-                          labels: ['sync-failure'],
-                        });
-                      }
