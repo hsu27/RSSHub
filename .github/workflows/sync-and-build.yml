@@ -27,14 +27,20 @@ jobs:
                   git config user.email "github-actions[bot]@users.noreply.github.com"
 
             - name: Sync master with upstream
+              env:
+                  GH_PAT: ${{ secrets.RSSHUB_PAT }}
               run: |
                   # 確保本地有 master 與 my-routes 分支並與遠端同步
                   git checkout master || git checkout -b master origin/master
                   git remote add upstream https://github.com/DIYgod/RSSHub.git
-                  
-                  # 清掉 checkout 注入的 PAT，讓 upstream 走匿名抓取，避免 403
+
+                  # 清掉 actions/checkout 對 github.com 注入的全域憑證，
+                  # 讓 upstream 走匿名（公開）抓取，避免帶著本帳號 PAT 造成 403
                   git config --unset-all http.https://github.com/.extraheader || true
-            
+
+                  # 清掉憑證後 origin 也失去授權，因此把 PAT 直接嵌進 origin URL
+                  git remote set-url origin "https://x-access-token:${GH_PAT}@github.com/${GITHUB_REPOSITORY}.git"
+
                   git fetch upstream master
                   git merge --ff-only upstream/master
                   git push origin master
