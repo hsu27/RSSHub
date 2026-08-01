@@ -18,7 +18,7 @@ jobs:
               with:
                   fetch-depth: 0
                   # 注意：若有分支保護，建議將下方換成自訂的 PAT (Personal Access Token)
-                  token: ${{ secrets.RSSHUB_PAT }}
+                  token: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Configure git
               run: |
@@ -30,7 +30,7 @@ jobs:
               with:
                   registry: ghcr.io
                   username: ${{ github.actor }}
-                  password: ${{ secrets.RSSHUB_PAT }}
+                  password: ${{ secrets.GITHUB_TOKEN }}
 
             # 處理 GitHub 帳號包含大寫字母的情況，轉為小寫給 Docker 使用
             - name: Downcase repository owner
