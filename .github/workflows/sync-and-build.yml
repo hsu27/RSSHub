@@ -31,6 +31,10 @@ jobs:
                   # 確保本地有 master 與 my-routes 分支並與遠端同步
                   git checkout master || git checkout -b master origin/master
                   git remote add upstream https://github.com/DIYgod/RSSHub.git
+                  
+                  # 清掉 checkout 注入的 PAT，讓 upstream 走匿名抓取，避免 403
+                  git config --unset-all http.https://github.com/.extraheader || true
+            
                   git fetch upstream master
                   git merge --ff-only upstream/master
                   git push origin master
