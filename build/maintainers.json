@@ -2011,6 +2011,7 @@
   "/91porn/:lang?": [
     "TonyRL"
   ],
+  "/HiroshimaCarp/chen-blog": [],
   "/a9vg/:category{.+}?": [
     "monnerHenster",
     "nczitzk"
@@ -4230,6 +4231,9 @@
   ],
   "/gq/news": [
     "IvanWng97"
+  ],
+  "/gqTW/news": [
+    "EthanWng97"
   ],
   "/grainoil/:category/:id": [
     "nczitzk"
